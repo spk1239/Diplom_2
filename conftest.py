@@ -5,7 +5,7 @@ from urls import Urls
 
 @pytest.fixture
 def registered_user():
-
+    """Фикстура для регистрации пользователя"""
     fake = Faker()
     payload = {
         "email": fake.email(),
@@ -20,3 +20,14 @@ def registered_user():
             "email": payload["email"],
             "password": payload["password"]
         }
+
+@pytest.fixture
+def login_user(registered_user):
+    """Фикстура для авторизации пользователя и получения токенов"""
+        
+    user_data = registered_user
+
+    response = requests.post(f"{Urls.BURGER_URL}/api/auth/login", data=user_data)
+
+    return {"accessToken": response.json()["accessToken"],
+            "refreshToken": response.json()["refreshToken"]}

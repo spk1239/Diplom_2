@@ -7,7 +7,7 @@ from faker import Faker
 class TestCourierLogin():
 
     @allure.title('Проверка Входа зарегистрированного пользователя')
-    def test_courier_login_registered_courier(self, registered_user):
+    def test_courier_login_user(self, registered_user):
         
         user_data = registered_user
 
@@ -19,7 +19,7 @@ class TestCourierLogin():
     
     @allure.title('Проверка Входа при неверном логине и пароле')
     @pytest.mark.parametrize("data", ["email", "password"])
-    def test_courier_login_without_invalid_login_and_password(self,data,registered_user):
+    def test_user_login_without_invalid_login_and_password(self,data,registered_user):
 
         fake = Faker(locale="ru_RU") 
 

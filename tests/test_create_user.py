@@ -47,7 +47,7 @@ class TestCreatingUser():
 
     @allure.title("Создание пользователя без одного обязательно поля")
     @pytest.mark.parametrize("data", ["email", "password", "name"])
-    def test_dont_creating__missing_field(self, data):
+    def test_dont_creating_user_missing_field(self, data):
 
         fake = Faker(locale="ru_RU") 
 
