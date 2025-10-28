@@ -15,8 +15,8 @@ class TestCreatingOrder():
             payload = {"ingredients": ["61c0c5a71d1f82001bdaaa6c","61c0c5a71d1f82001bdaaa76"]}
 
             response = requests.post(f'{Urls.BURGER_URL}/api/orders',  data=payload,
-                                     headers={"Authorization": f"Bearer {user["accessToken"]}"})
-
+                                     headers={"Authorization": user["accessToken"]})
+            
         with allure.step("Проверить успешное создание заказа"):
             assert response.status_code == 200 and response.json()["success"] == True
 
